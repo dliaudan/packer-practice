@@ -10,13 +10,13 @@ packer {
 }
 
 source "amazon-ebs" "ubuntu" {
-  ami_name                    = "nginx-ami"
+  ami_name                    = var.name_of_ami
   ami_description             = "This source needs to build ami ubuntu with docker and containered nginx application" 
-  instance_type               = "t3.micro"
-  source_ami                  = "ami-0989fb15ce71ba39e"
-  region                      = "eu-north-1"
+  instance_type               = var.instance_type
+  source_ami                  = var.source_ami
+  region                      = var.ami_region
   associate_public_ip_address = true
-  ssh_username = "ubuntu"
+  ssh_username                = var.username
 }
 
 build {
